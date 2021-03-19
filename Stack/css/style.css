@@ -1,13 +1,6 @@
-.container {
-    display: flex;
-}
-.plate {
-    height: 40px;
-    width: 250px;
-    border-radius: 0 0 100% 100%;
-    margin-bottom: 5px;
-}
+@import url("/css/plate.css");
+@import url("/css/button.css");
 
-.plate_color_grey {
-    background-color: grey; 
+.container {
+    padding: 50px 0;
 }

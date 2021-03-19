@@ -9,18 +9,18 @@
 </head>
 <body>
     <h1 class="h1">Stack</h1>
+    <hr>
     <div class="container">
-        <div class="plates plates_size_m plates_color_dimgray">
-            <h2>Stack</h2>            
-            <div class="plates__box">
+        <div class="plates plates_size_m plates_position_center plates_style_border plates_color_seashell plates__style_shadow">
+            <div class="plates__box plates__box_size_m">
                 <div class="plate plate_color_grey"></div>
             </div>
-            <button onclick="addPlate(plates)" class="button">Добавить</button>
-            <button onclick="deletePlate(plates)" class="button">Удалить</button>
-        </div>
-
-        <div class="queue">
-
+    
+            <hr>
+            <div class="plates__buttonMenu plates__buttonMenu_size_s">
+                <button onclick="addPlate(plates)" class="button button_size_s button_color_green">Добавить</button>
+                <button onclick="deletePlate(plates)" class="button button_size_s button_color_red">Удалить</button>
+            </div>
         </div>
     </div>
     <script src="/js/script.js"></script>

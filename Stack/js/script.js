@@ -38,13 +38,14 @@ function deletePlate(stack) {
         platesBox.removeChild(plate);
         stack.pop();
     } else {
-        alert("в стеке не осталось элементов!");
+        alert("в стеке нет элементов!");
     }
     console.log(stack);
 }
 
 function createPlate(stack) {
     let plate = document.querySelector(".plate");
+        plate.style.zIndex = stack.length;
 
     plate.insertAdjacentElement("beforeBegin", stack[stack.length - 1]);
 }
@@ -54,13 +55,16 @@ function makeColor(plate, colorNumber) {
 
     switch(colorNumber) {
         case 0:
-            plate.style.backgroundColor = "red";
+            plate.style.backgroundColor = "Crimson";
+            plate.style.borderColor = "DarkRed";
             break;
         case 1:
-            plate.style.backgroundColor = "blue";
+            plate.style.backgroundColor = "SteelBlue";
+            plate.style.borderColor = "DarkSlateBlue";
             break;
         case 2: 
-            plate.style.backgroundColor = "green";
+            plate.style.backgroundColor = "OliveDrab";
+            plate.style.borderColor = "DarkOliveGreen";
             break;
         default: 
         plate.style.backgroundColor = "gray";
