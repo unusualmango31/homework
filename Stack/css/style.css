@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+}
+.plate {
+    height: 40px;
+    width: 250px;
+    border-radius: 0 0 100% 100%;
+    margin-bottom: 5px;
+}
+
+.plate_color_grey {
+    background-color: grey; 
+}
