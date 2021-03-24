@@ -1,4 +1,5 @@
 let plates = new Stack();
+let logger = console.log;
 
 function Stack() {
     this.stack = [];
@@ -20,14 +21,17 @@ function addPlate(stack) {
 
     plate.className = "plate";
     makeColor(plate, colorNumber);
+    plate.style.zIndex = stack.length + 1;
 
     if(stack.length != 10) {
         stack.push(plate);
-        createPlate(stack);
+        previousPlate = document.querySelector(".plate");
+        previousPlate.insertAdjacentElement("beforeBegin", stack[stack.length - 1]);
+        console.log.call(plates, `Добавлен элемент с индексом [${stack.length - 1}]`);
     } else {
         alert("Стэк переполнен!");
+        console.log.call(plates, "Переполнение стека");
     }
-    console.log(stack);
 }
 
 function deletePlate(stack) {
@@ -37,17 +41,11 @@ function deletePlate(stack) {
     if(stack.length != 0) {
         platesBox.removeChild(plate);
         stack.pop();
+        console.log.call(plates, `Удалён элемент элемент с индексом [${stack.length}]`);
     } else {
         alert("в стеке нет элементов!");
+        console.log.call(plates, "В стеке отсуствуют элементы");
     }
-    console.log(stack);
-}
-
-function createPlate(stack) {
-    let plate = document.querySelector(".plate");
-        plate.style.zIndex = stack.length;
-
-    plate.insertAdjacentElement("beforeBegin", stack[stack.length - 1]);
 }
 
 function makeColor(plate, colorNumber) {
@@ -73,3 +71,13 @@ function makeColor(plate, colorNumber) {
 
     return plate;
 }
+
+console.log = function(message) {
+    let time = new Date (),
+        hours = String( time.getHours() ),
+        minutes = String( time.getMinutes() ),
+        seconds = String( time.getSeconds() );
+    
+    time = hours + ":" + minutes + ":" + seconds;
+    logger(time, message, `\n`, this);
+};
