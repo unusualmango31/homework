@@ -1,5 +1,23 @@
-let plates = new Stack();
-let logger = console.log;
+let plates = new Stack(),
+    logger = console.log,
+    addButton = document.getElementById("addButton"),
+    removeButton = document.getElementById("removeButton");
+
+addButton.addEventListener("click", () => {
+    try { 
+        return addPlate(plates) 
+    } catch (err) {
+        console.log(err);
+    }
+}, false);
+
+removeButton.addEventListener("click", () => {
+    try { 
+        return deletePlate(plates) 
+    } catch (err) {
+        console.log(err);
+    }
+}, false);
 
 function Stack() {
     this.stack = [];
@@ -18,33 +36,42 @@ function Stack() {
 function addPlate(stack) {
     let colorNumber = Math.floor(Math.random() * Math.floor(3)),
         plate = document.createElement("div");
-
+    
     plate.className = "plate";
-    makeColor(plate, colorNumber);
-    plate.style.zIndex = stack.length + 1;
 
-    if(stack.length != 10) {
-        stack.push(plate);
-        previousPlate = document.querySelector(".plate");
-        previousPlate.insertAdjacentElement("beforeBegin", stack[stack.length - 1]);
-        console.log.call(plates, `Добавлен элемент с индексом [${stack.length - 1}]`);
-    } else {
-        alert("Стэк переполнен!");
-        console.log.call(plates, "Переполнение стека");
+    try {
+        makeColor(plate, colorNumber);
+        plate.style.zIndex = stack.length + 1;
+
+        if(stack.length != 10) {
+            stack.push(plate);
+            previousPlate = document.querySelector(".plate");
+            previousPlate.insertAdjacentElement("beforeBegin", stack[stack.length - 1]);
+            console.log.call(plates, `Добавлен элемент с индексом [${stack.length - 1}]`);
+        } else {
+            alert("Стэк переполнен!");
+            console.log.call(plates, "Переполнение стека");
+        }
+    } catch (err) {
+        console.log(err);
     }
 }
 
 function deletePlate(stack) {
-    let platesBox = document.querySelector(".plates__box"),
+    try {
+        let platesBox = document.querySelector(".plates__box"),
         plate = document.querySelector(".plate");
 
-    if(stack.length != 0) {
-        platesBox.removeChild(plate);
-        stack.pop();
-        console.log.call(plates, `Удалён элемент элемент с индексом [${stack.length}]`);
-    } else {
-        alert("в стеке нет элементов!");
-        console.log.call(plates, "В стеке отсуствуют элементы");
+        if(stack.length != 0) {
+            platesBox.removeChild(plate);
+            stack.pop();
+            console.log.call(plates, `Удалён элемент элемент с индексом [${stack.length}]`);
+        } else {
+            alert("в стеке нет элементов!");
+            console.log.call(plates, "В стеке отсуствуют элементы");
+        }
+    } catch(err) {
+        console.log(err);
     }
 }
 
