@@ -34,8 +34,7 @@ function Stack() {
 }
 
 function addPlate(stack) {
-    let colorNumber = Math.floor(Math.random() * Math.floor(3)),
-        plate = document.createElement("div");
+    let plate = document.createElement("div");
     
     plate.className = "plate";
 
@@ -75,28 +74,29 @@ function deletePlate(stack) {
     }
 }
 
-function makeColor(plate, colorNumber) {
-    plate.style.backgroundColor = "";
+function makeColor(element) {
+    let colorNumber = Math.floor(Math.random() * Math.floor(3));
+    element.style.backgroundColor = "";
 
     switch(colorNumber) {
         case 0:
-            plate.style.backgroundColor = "Crimson";
-            plate.style.borderColor = "DarkRed";
+            element.style.backgroundColor = "Crimson";
+            element.style.borderColor = "DarkRed";
             break;
         case 1:
-            plate.style.backgroundColor = "SteelBlue";
-            plate.style.borderColor = "DarkSlateBlue";
+            element.style.backgroundColor = "SteelBlue";
+            element.style.borderColor = "DarkSlateBlue";
             break;
         case 2: 
-            plate.style.backgroundColor = "OliveDrab";
-            plate.style.borderColor = "DarkOliveGreen";
+            element.style.backgroundColor = "OliveDrab";
+            element.style.borderColor = "DarkOliveGreen";
             break;
         default: 
-        plate.style.backgroundColor = "gray";
+            element.style.backgroundColor = "gray";
             break;
     }
 
-    return plate;
+    return element;
 }
 
 console.log = function(message) {
